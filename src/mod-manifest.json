@@ -1,0 +1,103 @@
+{
+    "apiVersion": "1.3",
+    "version": "1.0.0",
+    "name": "3D Combined Surface and Line Chart",
+    "id": "3d-combined-diagram",
+    "icon": "icon.svg",
+    "properties": [
+        {
+            "name": "mod-config",
+            "type": "string",
+            "defaultValue": ""
+        }
+    ],
+    "dataViewDefinition": {
+        "colorAxis": {
+            "mode": "dual",
+            "allowNonAggregatingMeasures": true,
+            "dropTarget": {
+                "icon": "Color",
+                "description": "Color by {0}"
+            }
+        },
+        "axes": [
+            {
+                "name": "Trellis By",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Group By",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Order By",
+                "mode": "continuous",
+                "placement": "none",
+                "allowNonAggregatingMeasures": true
+            },
+            {
+                "name": "Layer Type",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Display Mode",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Name",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Label",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Symbol",
+                "mode": "categorical",
+                "placement": "none"
+            },
+            {
+                "name": "Size",
+                "mode": "continuous",
+                "placement": "none",
+                "allowNonAggregatingMeasures": true
+            },
+            {
+                "name": "X",
+                "mode": "continuous",
+                "allowNonAggregatingMeasures": true,
+                "placement": "none"
+            },
+            {
+                "name": "Y",
+                "mode": "continuous",
+                "allowNonAggregatingMeasures": true,
+                "placement": "none"
+            },
+            {
+                "name": "Z",
+                "mode": "continuous",
+                "allowNonAggregatingMeasures": true,
+                "placement": "none"
+            }
+        ]
+    },
+    "files": [
+        "index.html",
+        "main.css",
+        "default_configuration.js",
+        "default_configuration_template.js",
+        "main.js",
+        "plotly_3d_diagram.js",
+        "plotly_configuration.js",
+        "utility.js",
+        "viz_configuration.js",
+        "lib/plotly-2.27.0.min.js"
+    ]
+}
