@@ -76,7 +76,14 @@ const defaultConfigurationTemplate = {
                     "square-open",
                     "x"
                 ]
-            }
+            },
+            "surfaceOpacity": {
+                "label": "Surface Opacity",
+                "datatype": "double",
+                "minValue": 0.0,
+                "maxValue": 1.0,
+                "axisOverride": "Opacity"
+            },
         }
     }
 

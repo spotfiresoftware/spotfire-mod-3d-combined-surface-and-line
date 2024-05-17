@@ -19,7 +19,8 @@ const defaultConfiguration = {
             "markerLineWidth": 1,
             "markerSize": 4,
             "markerSymbol": "circle",
-            "mode": "lines"
+            "mode": "lines",
+            "surfaceOpacity": 1.0
         }
     }
 

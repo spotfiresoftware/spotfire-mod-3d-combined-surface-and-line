@@ -13,13 +13,45 @@ The 3D Combined Surface and Line Chart Mod is used to draw 3D representations of
 1. The visualization mod is added to the analysis.
 1. To learn about the capabilities and limitations of this visualization mod, keep reading.
 
-For general information on how to use and share visualization mods, [read the Spotfire documentation](https://docs.tibco.com/pub/sfire-analyst/14.1.0/doc/html/en-US/TIB_sfire-analyst_UsersGuide/index.htm#t=modvis%2Fmodvis_how_to_use_a_visualization_mod.htm).
+For general information on how to use and share visualization mods, [read the Spotfire documentation](https://docs.tibco.com/pub/sfire-analyst/latest/doc/html/en-US/TIB_sfire-analyst_UsersGuide/index.htm#t=modvis%2Fmodvis_how_to_use_a_visualization_mod.htm).
 
 ## Data requirements
 
 Every mod handles missing, corrupted and/or inconsistent data in different ways. It is advised to always review how the data is visualized.
 
 The 3D Combined Surface and Line Chart Mod will draw surfaces, lines, and points in a three dimensional space. To do this, spatial data must be provided and pre-computed where necessary. 
+
+Lines and points will generally plot with specified x, y, z co-ordinates as expected. But there are special requirements for surface data, due to contraints in the underlying Plotly library.
+
+### Surface Data Requirements
+
+When surface data is provided, it will be transformed from x, y, z rows into a 2-dimensional matrix for plotting. In order for the surface to display, there should not be any gaps or nulls in the matrix. This means that for every possible combination of x and y, there should be a z value. This constraint applies to co-ordinates within a given Group By value, which results in a single surface instance.
+
+This image shows a simple 4X4 matrix, with x values across the top, and y values along the left-hand side:
+
+![Matrix](./doc/images/matrix.png)
+
+Note that there are no empty cells here. 
+
+This matrix will need to be converted to 16 rows (4 X 4 = 16), with x, y, z co-ordinates and will look like this:
+
+![Rows](./doc/images/rows.png)
+
+Once in rows format, that data can be imported into Spotfire® and used with the Mod.
+
+![Surface Plot](./doc/images/surface-plot.png)
+
+In some circumstances a partial surface will be generated when there are gaps in the data, but it has been observed that in other cases no surface at all is displayed, and no error is produced. So this must be considered when building datasets and configuring the Mod.
+
+It has also been observed that Plotly will sometimes not plot perfectly flat planes. For example, this horizontal plane was plotted correctly:
+
+![Horizontal Plane](./doc/images/horizontal-plane.png)
+
+But this vertical plane results in no surface:
+
+![Vertical Plane](./doc/images/vertical-plane.png)
+
+One possible workaround for this is to apply a very small delta to the y-values in alternating rows, but this could also impact the automatic scales, resulting in an inclined plane rather than a vertical plane where the axis range is particularly small.
 
 ## Setting up the 3D Combined Surface and Line Chart
 
@@ -128,6 +160,7 @@ Additional configuration for the mod can be accessed by clicking on the small se
 | Marker Outline Color | Maker outline color | This only has effect if Marker Outline Enabled is true. Must be a valid HTML color name. |
 | Marker Outline Width | Maker outline width in px | This only has effect if Marker Outline Enabled is true. |
 | Marker Symbol | Default marker symbol | Applies only if Symbol axis is not configured |
+| Surface Opacity | Formation surface opacity | Must be a decimal number between 0.0 and 1.0 |
 
 ## Using the 3D Combined Surface and Line Chart
 

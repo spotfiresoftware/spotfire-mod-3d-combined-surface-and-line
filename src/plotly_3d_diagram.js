@@ -183,6 +183,7 @@ class Plotly3DCombinedDiagram {
             y: converted.y,
             z: converted.z,
             type: 'surface',
+            opacity: this.configuration.surfaceOpacity,
             showscale: false
         }
 

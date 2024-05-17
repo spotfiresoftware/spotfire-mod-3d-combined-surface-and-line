@@ -287,7 +287,8 @@ Spotfire.initialize(async (mod) => {
             markerLineColor: modConfig.plotly.scatter3d.markerLineColor,
             markerLineWidth: modConfig.plotly.scatter3d.markerLineWidth,
             markerSize: modConfig.plotly.scatter3d.markerSize,
-            markerSymbol: modConfig.plotly.scatter3d.markerSymbol
+            markerSymbol: modConfig.plotly.scatter3d.markerSymbol,
+            surfaceOpacity: modConfig.plotly.scatter3d.surfaceOpacity
         };
 
         // Loop over the trellis data
